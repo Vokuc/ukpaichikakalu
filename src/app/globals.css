@@ -1,26 +1,203 @@
 @import "tailwindcss";
 
+@theme {
+  --color-void: #030407;
+  --color-obsidian: #080a10;
+  
+  /* Navy Spectrum */
+  --color-navy-950: #050b16;
+  --color-navy-900: #0a1426;
+  --color-navy-800: #0f1f3d;
+  --color-navy-700: #172d56;
+  --color-navy-600: #23437e;
+  --color-navy-glow: #38bdf8;
+  
+  /* Deep Coffee Brown Spectrum */
+  --color-coffee-950: #140c08;
+  --color-coffee-900: #22140d;
+  --color-coffee-800: #331e13;
+  --color-coffee-700: #4a2c1d;
+  --color-coffee-600: #6b402b;
+  --color-coffee-amber: #c48956;
+  --color-coffee-gold: #dfa471;
+  
+  /* Neutrals & Metals */
+  --color-chalk: #f1f5f9;
+  --color-cream: #fbf5ee;
+  --color-bone: #e2e8f0;
+  --color-ash: #94a3b8;
+  --color-charcoal-800: #131722;
+
+  /* Typography Pairing */
+  --font-display: var(--font-syne), sans-serif;
+  --font-digital: var(--font-dotgothic), monospace;
+  --font-expanded: var(--font-stint), serif;
+  --font-hand: var(--font-caveat), cursive;
+  --font-mono: var(--font-jetbrains-mono), var(--font-dotgothic), monospace;
+}
+
+/* Master Navy, Deep Coffee & Black Palette */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-primary: #050912;
+  --bg-secondary: #0a1120;
+  --coffee-deep: #1d110a;
+  --border-navy: #192d4f;
+  --border-coffee: #412618;
+  --accent-amber: #c48956;
+  --accent-cyan: #38bdf8;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-primary);
+  color: #f1f5f9;
+  background-size: 32px 32px;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Font Classes */
+.font-display {
+  font-family: var(--font-syne), sans-serif;
+}
+
+.font-digital {
+  font-family: var(--font-dotgothic), monospace;
+  letter-spacing: 0.04em;
+}
+
+.font-expanded {
+  font-family: var(--font-stint), serif;
+  letter-spacing: 0.12em;
+}
+
+.font-hand {
+  font-family: var(--font-caveat), cursive;
+}
+
+.font-mono {
+  font-family: var(--font-jetbrains-mono), var(--font-dotgothic), monospace;
+}
+
+/* Music x Code Studio Brutalist Card */
+.brutal-card {
+  background: linear-gradient(145deg, #091122 0%, #150e09 100%);
+  border: 1.5px solid #1c335a;
+  box-shadow: 3px 3px 0px 0px #0a1528, 3px 3px 0px 1.5px #3a2215;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (min-width: 640px) {
+  .brutal-card {
+    box-shadow: 4px 4px 0px 0px #0a1528, 4px 4px 0px 1.5px #3a2215;
+  }
+}
+
+.brutal-card:hover {
+  border-color: #c48956;
+  box-shadow: 5px 5px 0px 0px #c48956, 5px 5px 0px 1.5px #38bdf8;
+  transform: translate(-2px, -2px);
+}
+
+/* Inverted Amber / Cream Brutalist Card */
+.brutal-card-invert {
+  background: linear-gradient(135deg, #f4e8dc 0%, #dfa471 100%);
+  color: #050912;
+  border: 1.5px solid #dfa471;
+  box-shadow: 3px 3px 0px 0px #2a190f;
+  transition: all 0.22s ease;
+  touch-action: manipulation;
+}
+
+.brutal-card-invert:hover {
+  box-shadow: 5px 5px 0px 0px #38bdf8;
+  transform: translate(-2px, -2px);
+}
+
+/* Mobile-Friendly Sketch Border */
+.sketch-border {
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+
+/* Architectural Soundwave Grid Background */
+.arch-grid-bg {
+  background-image: 
+    linear-gradient(to right, rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(196, 137, 86, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+@media (min-width: 768px) {
+  .arch-grid-bg {
+    background-size: 40px 40px;
+  }
+}
+
+/* Custom Inked Studio Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #04070e;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e355c;
+  border-radius: 3px;
+  border: 1px solid #3d2315;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c48956;
+}
+
+/* Noise & Tape Flutter Texture Overlay */
+.grain-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+/* Draggable Sticky Note Style */
+.sticky-note {
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+}
+.sticky-note:active {
+  cursor: grabbing;
+}
+
+.text-stroke-amber {
+  -webkit-text-stroke: 1.2px #c48956;
+}
+
+.text-stroke-navy {
+  -webkit-text-stroke: 1.2px #38bdf8;
+}
+
+/* Equalizer Bars Animation */
+@keyframes eqBarPulse {
+  0%, 100% { height: 18%; }
+  50% { height: 95%; }
+}
+
+.eq-bar {
+  animation: eqBarPulse 1.2s ease-in-out infinite alternate;
+}
+
+/* Vinyl Spin */
+@keyframes vinylSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-vinyl {
+  animation: vinylSpin 14s linear infinite;
+}
+
+/* Mobile Touch Optimization */
+button, a, input, select, textarea {
+  touch-action: manipulation;
 }
